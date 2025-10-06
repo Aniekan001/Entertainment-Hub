@@ -9,8 +9,10 @@ trending = document.querySelector(".trending")
 movies = document.querySelector(".movies")
 series = document.querySelector(".series")
 search = document.querySelector(".search")
+type = document.querySelectorAll(".type")
 playdirty = document.querySelector(".playdirty")
 caughtstealing = document.querySelector(".caughtstealing")
+let targetparagraph = null
 
 griddiv = Array.from(grid.children)
 //To shuffle the Array
@@ -63,3 +65,20 @@ button3.addEventListener("click", () =>{
     showPage(currentpage)
 })
 showPage(currentpage)
+
+movies.addEventListener("click", () =>{
+    h2.textContent = "DISCOVER MOVIES"
+    grid.innerHTML = ''
+    type.forEach(type => {
+        if(type.textContent == "Movies"){
+            targetparagraph = type
+    }
+    })
+    if(targetparagraph){
+        const moviediv = targetparagraph.parentElement?.parentElement?.parentElement
+    }
+    if(moviediv){
+        const clone = moviediv.cloneNode(true)
+        grid.appendChild(clone)
+    }
+})
