@@ -23,7 +23,7 @@ function randomizeGrid(){
     grid.innerHTML = '';
     shuffled.forEach(box => grid.appendChild(box))
 }
-randomizeGrid();  //runs on refresh
+griddiv = randomizeGrid();  //runs on refresh
 
 //Get all the existing children in the grid
 const boxes = Array.from(grid.children)
