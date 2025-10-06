@@ -40,7 +40,7 @@ h2{
 section{
     z-index: 500;
     display: grid;
-    grid-template-columns: 220px 220px 220px 220px 220px;
+    grid-template-columns: 210px 210px 210px 210px 210px;
     gap: 50px 20px;
 }
 span{
