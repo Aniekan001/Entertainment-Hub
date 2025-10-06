@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header, main{
+    background-color: #39445A;
+    display: flex;
+}
+header{
+    width: 100%;
+    padding: 15px 0;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #282C34;
+    position: fixed;
+    z-index: 1000;
+}
+main{
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    color: #CED1D6;
+    font-size: 36px;
+    text-align: center;
+    font-weight: 400;
+}
+h2{
+    color: #CED1D6;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 100;
+    padding-bottom: 35px;
+}
+section{
+    z-index: 500;
+    display: grid;
+    grid-template-columns: 220px 220px 220px 220px 220px;
+    gap: 50px 20px;
+}
+span{
+    border-radius: 7px;
+    background-color: #3F51B5;
+    padding: 3px 10px;
+    color: #CED1D6;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+section>div{
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: #282C34;
+    border-radius: 20px;
+    padding: 5px;
+    color: #CED1D6;
+}
+section>div:hover{
+    transition: ease-in-out 0.5s;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #282C34;
+    background-color: #CED1D6;
+}   
+section>div>img{
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+section>div>div>p{
+    margin: auto;
+    margin-bottom: 17px;
+    text-align: center;
+}
+section>div>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.pagediv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px auto;
+    width: 32%;
+}
+.pagediv button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border:1px solid #696868;
+    color: #8DA5A5;
+    padding: 4px 10px;
+}
+.pagediv button:active{
+    background-color: #3131C0;
+}
+.pagediv button:hover{
+    background-color: #3131C0;
+}
+footer{
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #282C34;
+}
+footer>div{
+    margin: auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer>div>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #CED1D6;
+}
