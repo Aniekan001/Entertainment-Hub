@@ -5,14 +5,16 @@ previous = document.querySelector(".buttonprev")
 button1 = document.querySelector(".button1")
 button2 = document.querySelector(".button2")
 button3 = document.querySelector(".button3")
+h2 = document.querySelector(".h2")
 trending = document.querySelector(".trending")
-movies = document.querySelector(".movies")
+moviebutton = document.querySelector(".movies")
 series = document.querySelector(".series")
 search = document.querySelector(".search")
 type = document.querySelectorAll(".type")
 playdirty = document.querySelector(".playdirty")
 caughtstealing = document.querySelector(".caughtstealing")
 let targetparagraph = null
+let moviediv = null;
 
 griddiv = Array.from(grid.children)
 //To shuffle the Array
@@ -66,19 +68,40 @@ button3.addEventListener("click", () =>{
 })
 showPage(currentpage)
 
-movies.addEventListener("click", () =>{
+moviebutton.addEventListener("click", () =>{
     h2.textContent = "DISCOVER MOVIES"
     grid.innerHTML = ''
+    let movienewgrid = []
     type.forEach(type => {
         if(type.textContent == "Movies"){
-            targetparagraph = type
+            moviediv = type.parentElement?.parentElement?.parentElement
+            if(moviediv){
+            movienewgrid.push(moviediv)
+            }
+        }
+    })
+
+    movienewgrid.forEach(div => {
+        const clone = div.cloneNode(true)
+        grid.appendChild(clone)
+    })
+
+    boxes = Array.from(grid.children)
+    boxes.slice(start, end).forEach(box => grid.appendChild(box))
+    const itemperpage = 20
+    currentpage = 1
+    const totalpages = Math.ceil(boxes.length / itemperpage);
+    showPage(currentpage)
+    next.addEventListener("click", () =>{
+    if(currentpage< totalpages){
+        currentpage++
+        showPage(currentpage)
     }
     })
-    if(targetparagraph){
-        const moviediv = targetparagraph.parentElement?.parentElement?.parentElement
+    previous.addEventListener("click", () =>{
+    if(currentpage > 1){
+        currentpage--
+        showPage(currentpage)
     }
-    if(moviediv){
-        const clone = moviediv.cloneNode(true)
-        grid.appendChild(clone)
-    }
+    })
 })
