@@ -62,3 +62,4 @@ button3.addEventListener("click", () =>{
     currentpage = button2.innerHTML
     showPage(currentpage)
 })
+showPage(currentpage)
