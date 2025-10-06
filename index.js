@@ -87,21 +87,31 @@ moviebutton.addEventListener("click", () =>{
     })
 
     boxes = Array.from(grid.children)
-    boxes.slice(start, end).forEach(box => grid.appendChild(box))
-    const itemperpage = 20
     currentpage = 1
-    const totalpages = Math.ceil(boxes.length / itemperpage);
     showPage(currentpage)
-    next.addEventListener("click", () =>{
-    if(currentpage< totalpages){
+    boxes.slice(start, end).forEach(box => grid.appendChild(box))
+    next.onclick = () => {
+        if(currentpage< totalpages){
         currentpage++
         showPage(currentpage)
     }
-    })
-    previous.addEventListener("click", () =>{
-    if(currentpage > 1){
+    }
+    previous.onclick = () => {
+        if(currentpage< totalpages){
         currentpage--
         showPage(currentpage)
     }
-    })
+    }
+    // next.addEventListener("click", () =>{
+    // if(currentpage< totalpages){
+    //     currentpage++
+    //     showPage(currentpage)
+    // }
+    // })
+    // previous.addEventListener("click", () =>{
+    // if(currentpage > 1){
+    //     currentpage--
+    //     showPage(currentpage)
+    // }
+    // })
 })
