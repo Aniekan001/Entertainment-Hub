@@ -11,10 +11,17 @@ moviebutton = document.querySelector(".movies")
 series = document.querySelector(".series")
 search = document.querySelector(".search")
 type = document.querySelectorAll(".type")
+span = document.querySelectorAll("#span")
 playdirty = document.querySelector(".playdirty")
 caughtstealing = document.querySelector(".caughtstealing")
 let targetparagraph = null
 let moviediv = null;
+
+span.forEach(span => {
+        if(parseInt(span.textContent) < 5.0){
+        span.style.backgroundColor = "red"
+        }
+    })
 
 griddiv = Array.from(grid.children)
 //To shuffle the Array
@@ -63,7 +70,7 @@ button2.addEventListener("click", () =>{
     showPage(currentpage)
 })
 button3.addEventListener("click", () =>{
-    currentpage = button2.innerHTML
+    currentpage = button3.innerHTML
     showPage(currentpage)
 })
 showPage(currentpage)
@@ -102,16 +109,40 @@ moviebutton.addEventListener("click", () =>{
         showPage(currentpage)
     }
     }
-    // next.addEventListener("click", () =>{
-    // if(currentpage< totalpages){
-    //     currentpage++
-    //     showPage(currentpage)
-    // }
-    // })
-    // previous.addEventListener("click", () =>{
-    // if(currentpage > 1){
-    //     currentpage--
-    //     showPage(currentpage)
-    // }
-    // })
+})
+
+series.addEventListener("click", () =>{
+    h2.textContent = "DISCOVER SERIES"
+    grid.innerHTML = ''
+    let movienewgrid = []
+    type.forEach(type => {
+        if(type.textContent == "Tv Series"){
+            moviediv = type.parentElement?.parentElement?.parentElement
+            if(moviediv){
+            movienewgrid.push(moviediv)
+            }
+        }
+    })
+
+    movienewgrid.forEach(div => {
+        const clone = div.cloneNode(true)
+        grid.appendChild(clone)
+    })
+
+    boxes = Array.from(grid.children)
+    currentpage = 1
+    showPage(currentpage)
+    boxes.slice(start, end).forEach(box => grid.appendChild(box))
+    next.onclick = () => {
+        if(currentpage< totalpages){
+        currentpage++
+        showPage(currentpage)
+    }
+    }
+    previous.onclick = () => {
+        if(currentpage< totalpages){
+        currentpage--
+        showPage(currentpage)
+    }
+    }
 })
