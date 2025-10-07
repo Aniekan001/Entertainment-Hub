@@ -17,6 +17,7 @@ caughtstealing = document.querySelector(".caughtstealing")
 let targetparagraph = null
 let moviediv = null;
 
+trending.style.backgroundColor = "#6565b3ff"
 span.forEach(span => {
         if(parseInt(span.textContent) < 5.0){
         span.style.backgroundColor = "red"
@@ -75,7 +76,70 @@ button3.addEventListener("click", () =>{
 })
 showPage(currentpage)
 
+trending.addEventListener("click", () =>{
+    trending.style.backgroundColor = "#6565b3ff"
+    search.style.backgroundColor = "transparent"
+    series.style.backgroundColor = "transparent"
+    moviebutton.style.backgroundColor = "transparent"
+    h2.textContent = "TRENDING TODAY"
+    grid.innerHTML = ''
+    let trendinggrid = []
+    type.forEach(type => {
+        if(type.textContent == "Movies" || type.textContent == "Tv Series"){
+            trendingdiv = type.parentElement?.parentElement?.parentElement
+            if(trendingdiv){
+              trendinggrid.push(trendingdiv)
+            }
+        }
+    })
+    trendinggrid.forEach(div => {
+        const clone = div.cloneNode(true)
+        grid.appendChild(clone)
+    })
+
+    trendinggridgrid = Array.from(grid.children)
+    const itemperpage = 20
+    let currentpage = 1
+    const totalpages = Math.ceil(trendinggrid.length/itemperpage)
+
+function showPage(page){
+    grid.innerHTML = ''
+    const start = (page -1)* itemperpage
+    const end = start + itemperpage
+    trendinggrid.slice(start, end).forEach(box => grid.appendChild(box))
+}
+
+next.addEventListener("click", () =>{
+    if(currentpage< totalpages){
+        currentpage++
+        showPage(currentpage)
+    }
+})
+previous.addEventListener("click", () =>{
+    if(currentpage > 1){
+        currentpage--
+        showPage(currentpage)
+    }
+})
+button1.addEventListener("click", () =>{
+    currentpage = button1.innerHTML
+    showPage(currentpage)
+})
+button2.addEventListener("click", () =>{
+    currentpage = button2.innerHTML
+    showPage(currentpage)
+})
+button3.addEventListener("click", () =>{
+    currentpage = button3.innerHTML
+    showPage(currentpage)
+})
+showPage(currentpage)
+})
 moviebutton.addEventListener("click", () =>{
+    trending.style.backgroundColor = "transparent"
+    series.style.backgroundColor = "transparent"
+    search.style.backgroundColor = "transparent"
+    moviebutton.style.backgroundColor = "#6565b3ff"
     h2.textContent = "DISCOVER MOVIES"
     grid.innerHTML = ''
     let movienewgrid = []
@@ -83,7 +147,7 @@ moviebutton.addEventListener("click", () =>{
         if(type.textContent == "Movies"){
             moviediv = type.parentElement?.parentElement?.parentElement
             if(moviediv){
-            movienewgrid.push(moviediv)
+              movienewgrid.push(moviediv)
             }
         }
     })
@@ -93,56 +157,104 @@ moviebutton.addEventListener("click", () =>{
         grid.appendChild(clone)
     })
 
-    boxes = Array.from(grid.children)
-    currentpage = 1
+    movienewgrid = Array.from(grid.children)
+    const itemperpage = 20
+    let currentpage = 1
+    const totalpages = Math.ceil(movienewgrid.length/itemperpage)
+
+    //A local showPage function that uses movienewgrid
+    function showPage(page){
+    grid.innerHTML = ''
+    const start = (page -1)* itemperpage
+    const end = start + itemperpage
+    movienewgrid.slice(start, end).forEach(box => grid.appendChild(box))
+    }
+
+    next.addEventListener("click", () => {
+        if(currentpage< totalpages){
+            currentpage++
+            showPage(currentpage)
+        }
+    })
+    previous.addEventListener("click", () => {
+        if(currentpage>1){
+            currentpage--
+            showPage(currentpage)
+        }
+    })
+    button1.addEventListener("click", () =>{
+    currentpage = parseInt(button1.innerHTML)
     showPage(currentpage)
-    boxes.slice(start, end).forEach(box => grid.appendChild(box))
-    next.onclick = () => {
-        if(currentpage< totalpages){
-        currentpage++
-        showPage(currentpage)
-    }
-    }
-    previous.onclick = () => {
-        if(currentpage< totalpages){
-        currentpage--
-        showPage(currentpage)
-    }
-    }
+    })
+    button2.addEventListener("click", () =>{
+    currentpage = parseInt(button2.innerHTML)
+    showPage(currentpage)
+    })
+    button3.addEventListener("click", () =>{
+    currentpage = parseInt(button3.innerHTML)
+    showPage(currentpage)
+    })
+    showPage(currentpage)
 })
 
 series.addEventListener("click", () =>{
+    trending.style.backgroundColor = "transparent"
+    search.style.backgroundColor = "transparent"
+    series.style.backgroundColor = "#6565b3ff"
+    moviebutton.style.backgroundColor = "transparent"
     h2.textContent = "DISCOVER SERIES"
     grid.innerHTML = ''
-    let movienewgrid = []
+    let seriesnewgrid = []
     type.forEach(type => {
         if(type.textContent == "Tv Series"){
-            moviediv = type.parentElement?.parentElement?.parentElement
-            if(moviediv){
-            movienewgrid.push(moviediv)
+            seriesdiv= type.parentElement?.parentElement?.parentElement
+            if(seriesdiv){
+              seriesnewgrid.push(seriesdiv)
             }
         }
     })
 
-    movienewgrid.forEach(div => {
+    seriesnewgrid.forEach(div => {
         const clone = div.cloneNode(true)
         grid.appendChild(clone)
     })
 
-    boxes = Array.from(grid.children)
-    currentpage = 1
+    seriesnewgrid = Array.from(grid.children)
+    const itemperpage = 20
+    let currentpage = 1
+    const totalpages = Math.ceil(seriesnewgrid.length/itemperpage)
+
+    //A local showPage function that uses seriesnewgrid
+    function showPage(page){
+    grid.innerHTML = ''
+    const start = (page -1)* itemperpage
+    const end = start + itemperpage
+    seriesnewgrid.slice(start, end).forEach(box => grid.appendChild(box))
+    }
+
+    next.addEventListener("click", () => {
+        if(currentpage< totalpages){
+            currentpage++
+            showPage(currentpage)
+        }
+    })
+    previous.addEventListener("click", () => {
+        if(currentpage>1){
+            currentpage--
+            showPage(currentpage)
+        }
+    })
+    button1.addEventListener("click", () =>{
+    currentpage = parseInt(button1.innerHTML)
     showPage(currentpage)
-    boxes.slice(start, end).forEach(box => grid.appendChild(box))
-    next.onclick = () => {
-        if(currentpage< totalpages){
-        currentpage++
-        showPage(currentpage)
-    }
-    }
-    previous.onclick = () => {
-        if(currentpage< totalpages){
-        currentpage--
-        showPage(currentpage)
-    }
-    }
+    })
+    button2.addEventListener("click", () =>{
+    currentpage = parseInt(button2.innerHTML)
+    showPage(currentpage)
+    })
+    button3.addEventListener("click", () =>{
+    currentpage = parseInt(button3.innerHTML)
+    showPage(currentpage)
+    })
+    showPage(currentpage)
 })
